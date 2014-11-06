@@ -122,12 +122,12 @@ BlameHunk_dealloc(BlameHunk *self)
 {
     oid_str_free(self->final_commit_id);
     if (self->final_signature)
-        git_signature_free(self->final_signature);
+        oid_str_free(self->final_signature);
     oid_str_free(self->orig_commit_id);
     if (self->orig_path)
         free(self->orig_path);
     if (self->orig_signature)
-        git_signature_free(self->orig_signature);
+        oid_str_free(self->orig_signature);
     PyObject_Del(self);
 }
 

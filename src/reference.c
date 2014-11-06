@@ -440,8 +440,8 @@ RefLogEntry_init(RefLogEntry *self, PyObject *args, PyObject *kwds)
 static void
 RefLogEntry_dealloc(RefLogEntry *self)
 {
-    git_signature_free(self->oid_old);
-    git_signature_free(self->oid_new);
+    oid_str_free(self->oid_old);
+    oid_str_free(self->oid_new);
     free(self->message);
     git_signature_free(self->signature);
     PyObject_Del(self);
