@@ -149,8 +149,8 @@ static void
 Patch_dealloc(Patch *self)
 {
     Py_CLEAR(self->hunks);
-    free(self->old_oid);
-    free(self->new_oid);
+    git_signature_free(self->old_oid);
+    git_signature_free(self->new_oid);
     /* We do not have to free old_file_path and new_file_path, they will
      * be freed by git_diff_list_free in Diff_dealloc */
     PyObject_Del(self);

@@ -90,7 +90,7 @@ static void
 Note_dealloc(Note *self)
 {
     Py_CLEAR(self->repo);
-    free(self->annotated_id);
+    git_signature_free(self->annotated_id);
     git_note_free(self->note);
     PyObject_Del(self);
 }
